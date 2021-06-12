@@ -1,0 +1,29 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "allowJs": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2017", "dom"],
+    "strict": false,
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@nx-ioc/core-container": ["libs/core-container/src/index.ts"],
+      "@nx-ioc/eu-container": ["libs/eu-container/src/index.ts"],
+      "@nx-ioc/pl-container": ["libs/pl-container/src/index.ts"],
+      "@nx-ioc/fr-container": ["libs/fr-container/src/index.ts"],
+      "@nx-ioc/ioc": ["libs/ioc/src/index.ts"],
+      "@nx-ioc/components": ["libs/components/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

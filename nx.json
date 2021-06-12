@@ -1,0 +1,69 @@
+{
+  "implicitDependencies": {
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    ".eslintrc.json": "*"
+  },
+  "affected": {
+    "defaultBase": "master"
+  },
+  "npmScope": "nx-ioc",
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
+      }
+    }
+  },
+  "projects": {
+    "core-container": {
+      "tags": []
+    },
+    "eu-container": {
+      "tags": []
+    },
+    "pl-container": {
+      "tags": []
+    },
+    "fr-container": {
+      "tags": []
+    },
+    "core": {
+      "tags": []
+    },
+    "core-e2e": {
+      "tags": [],
+      "implicitDependencies": ["core"]
+    },
+    "eu": {
+      "tags": []
+    },
+    "eu-e2e": {
+      "tags": [],
+      "implicitDependencies": ["eu"]
+    },
+    "pl": {
+      "tags": []
+    },
+    "pl-e2e": {
+      "tags": [],
+      "implicitDependencies": ["pl"]
+    },
+    "fr": {
+      "tags": []
+    },
+    "fr-e2e": {
+      "tags": [],
+      "implicitDependencies": ["fr"]
+    },
+    "ioc": {
+      "tags": []
+    },
+    "components": {
+      "tags": []
+    }
+  }
+}
