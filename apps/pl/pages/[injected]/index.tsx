@@ -5,8 +5,6 @@ const Post = () => {
   const router = useRouter()
   const { injected } = router.query
 
-  console.log('ijectee', router)
-
   return (
     <>
       <p>Injected route: {injected}</p>
