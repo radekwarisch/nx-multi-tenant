@@ -17,12 +17,12 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@nx-ioc/core-container": ["libs/core-container/src/index.ts"],
+      "@nx-ioc/world-container": ["libs/world-container/src/index.ts"],
       "@nx-ioc/eu-container": ["libs/eu-container/src/index.ts"],
       "@nx-ioc/pl-container": ["libs/pl-container/src/index.ts"],
-      "@nx-ioc/fr-container": ["libs/fr-container/src/index.ts"],
-      "@nx-ioc/ioc": ["libs/ioc/src/index.ts"],
-      "@nx-ioc/components": ["libs/components/src/index.ts"]
+      "@nx-ioc/ioc": ["libs/ioc/src/index.tsx"],
+      "@nx-ioc/components": ["libs/components/src/index.ts"],
+      "@nx-ioc/app-core": ["libs/app-core/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

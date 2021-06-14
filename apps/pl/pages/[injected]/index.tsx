@@ -1,15 +1,15 @@
-import { PlContainer } from '@nx-ioc/pl-container'
 import { useRouter } from 'next/router'
+import {AppCore} from '@nx-ioc/app-core';
+import { PlContainerProvider } from '@nx-ioc/pl-container';
 
 const Post = () => {
   const router = useRouter()
   const { injected } = router.query
 
   return (
-    <>
-      <p>Injected route: {injected}</p>
-      <PlContainer route={String(injected)} />
-    </>
+        <PlContainerProvider>
+          <AppCore route={String(injected)} />
+        </PlContainerProvider>
   )
 }
 
