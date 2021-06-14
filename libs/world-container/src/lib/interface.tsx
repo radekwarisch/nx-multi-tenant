@@ -2,6 +2,7 @@ import * as R from 'ramda';
 import { AdditionalRoutes } from './additional-routes';
 import MyModule from './my-module';
 import { createContainer, InjectionProvider } from '@nx-ioc/ioc';
+import MyCmpComposites from './my-cmp';
 
 /**
  * @description
@@ -11,6 +12,7 @@ import { createContainer, InjectionProvider } from '@nx-ioc/ioc';
 export const WorldIdentifiers = {
   ADDITONAL_ROUTES: Symbol.for('ADDITONAL_ROUTES'),
   MY_MODULE: Symbol.for('MY_MODULE'),
+  MY_CMP_COMPOSITES: Symbol.for('MY_CMP_COMPOSITES')
 };
 
 /**
@@ -23,6 +25,7 @@ export const extendToWorldContainer = (container: any) => {
     .bind(WorldIdentifiers.ADDITONAL_ROUTES)
     .toConstantValue(AdditionalRoutes);
   container.bind(WorldIdentifiers.MY_MODULE).toConstantValue(MyModule);
+  container.bind(WorldIdentifiers.MY_CMP_COMPOSITES).toConstantValue(MyCmpComposites);
 
   return container;
 };

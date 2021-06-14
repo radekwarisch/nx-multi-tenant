@@ -1,11 +1,18 @@
+import * as R from 'ramda';
 import { useInjection } from '@nx-ioc/ioc';
 import { WorldIdentifiers } from '@nx-ioc/world-container';
 import Link from 'next/link';
+import { useWithLogic1, MyCmpRender } from '../../../../world-container/src/lib/my-cmp';
 
 const HomeRoute = () => {
   const MyModule: any = useInjection(WorldIdentifiers.MY_MODULE);
+  const MyCmpComposites: Array<any> = useInjection(WorldIdentifiers.MY_CMP_COMPOSITES);
 
-  return <MyModule />;
+  const [useWithLogic1, useWithLogic2, MyCmpRender] = MyCmpComposites;
+
+  const MyCmp: any = R.pipe(useWithLogic1, useWithLogic2, MyCmpRender);
+
+  return (<><MyCmp propsLabel={'original props label'} /><MyModule /></>);
 };
 
 const BASE_ROUTES = {
