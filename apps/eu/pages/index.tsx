@@ -1,7 +1,7 @@
 import React from 'react';
 
-import styles from './index.module.css';
-import {EuContainer} from '@nx-ioc/eu-container';
+import {AppCore} from '@nx-ioc/app-core';
+import { EuContainerProvider } from '@nx-ioc/eu-container';
 
 export function Index() {
   /*
@@ -10,7 +10,10 @@ export function Index() {
    * Note: The corresponding styles are in the ./index.css file.
    */
   return (
-    <EuContainer />
+    <EuContainerProvider>
+        <AppCore route={''} />
+    </EuContainerProvider>
+
   );
 }
 

@@ -1,1 +1,1 @@
-export * from './lib/pl-container';
+export * from './lib/interface';

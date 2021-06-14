@@ -1,18 +1,18 @@
-import React, { useContext, useMemo } from "react";
+import React, { useContext, useMemo } from 'react';
 
-import { Container, interfaces } from "inversify";
+import { Container, interfaces } from 'inversify';
 
 const InversifyContext = React.createContext<{ container: Container | null }>({
-  container: null
+  container: null,
 });
 
 type Props = {
   container: Container;
 };
 
-export const Provider: React.FC<Props> = (props) => {
+export const InjectionProvider: React.FC<Props> = (props) => {
   const value = useMemo(() => ({ container: props.container }), [
-    props.container
+    props.container,
   ]);
 
   return (
@@ -27,8 +27,21 @@ export function useInjection<T>(identifier: interfaces.ServiceIdentifier<T>) {
 
   if (!container) {
     throw new Error(
-      "DI context not found. Is your component wrapped in <InversifyContext.Provider />?"
+      'DI context not found. Is your component wrapped in <InversifyContext.Provider />?'
     );
   }
+
   return container.get<T>(identifier);
 }
+
+export const createContainer = () => {
+  const container = new Container();
+
+  return container;
+};
+
+export const extendContainer = (extendFn: (container: any) => any) => (
+  container: any
+) => {
+  return extendFn(container);
+};

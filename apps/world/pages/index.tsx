@@ -1,7 +1,7 @@
 import React from 'react';
 
+import {WorldContainerProvider} from '@nx-ioc/world-container';
 import {AppCore} from '@nx-ioc/app-core';
-import { PlContainerProvider } from '@nx-ioc/pl-container';
 
 export function Index() {
   /*
@@ -10,10 +10,9 @@ export function Index() {
    * Note: The corresponding styles are in the ./index.css file.
    */
   return (
-
-        <PlContainerProvider>
-          <AppCore route={''} />
-        </PlContainerProvider>
+    <WorldContainerProvider>
+      <AppCore route={''} />
+    </WorldContainerProvider>
 
   );
 }

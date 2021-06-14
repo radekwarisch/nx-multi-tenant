@@ -9,12 +9,12 @@ function CustomApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>Welcome to eu!</title>
+        <title>Welcome to core!</title>
       </Head>
       <div className="app">
         <header className="flex">
           <NxLogo width="75" height="50" />
-          <h1>Welcome to eu!</h1>
+          <h1>Welcome to core!</h1>
         </header>
         <main>
           <Component {...pageProps} />
