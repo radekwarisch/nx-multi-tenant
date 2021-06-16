@@ -162,27 +162,6 @@
         }
       }
     },
-    "ioc": {
-      "root": "libs/ioc",
-      "sourceRoot": "libs/ioc/src",
-      "projectType": "library",
-      "targets": {
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["libs/ioc/**/*.{ts,tsx,js,jsx}"]
-          }
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/ioc"],
-          "options": {
-            "jestConfig": "libs/ioc/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
     "components": {
       "root": "libs/components",
       "sourceRoot": "libs/components/src",
@@ -292,6 +271,48 @@
           "outputs": ["coverage/libs/app-core"],
           "options": {
             "jestConfig": "libs/app-core/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "di-bindings": {
+      "root": "libs/di-bindings",
+      "sourceRoot": "libs/di-bindings/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/di-bindings/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/di-bindings"],
+          "options": {
+            "jestConfig": "libs/di-bindings/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "di-common": {
+      "root": "libs/di-common",
+      "sourceRoot": "libs/di-common/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/di-common/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/di-common"],
+          "options": {
+            "jestConfig": "libs/di-common/jest.config.js",
             "passWithNoTests": true
           }
         }

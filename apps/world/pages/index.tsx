@@ -1,20 +1,18 @@
-import React from 'react';
-
-import {WorldContainerProvider} from '@nx-ioc/world-container';
+import { useRouter } from 'next/router'
 import {AppCore} from '@nx-ioc/app-core';
+import { getWorldContainer } from '@nx-ioc/world-container';
+import { InjectionProvider } from '@nx-ioc/di-common';
 
-export function Index() {
-  /*
-   * Replace the elements below with your own.
-   *
-   * Note: The corresponding styles are in the ./index.css file.
-   */
+const Post = () => {
+  const router = useRouter()
+  const { injected } = router.query
+
   return (
-    <WorldContainerProvider>
-      <AppCore route={''} />
-    </WorldContainerProvider>
-
-  );
+    <InjectionProvider container={getWorldContainer()}>
+      <AppCore route={String(injected)} />
+    </InjectionProvider>
+  )
 }
 
-export default Index;
+export default Post
+

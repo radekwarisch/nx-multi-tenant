@@ -6,6 +6,8 @@ import { ReactComponent as NxLogo } from '../public/nx-logo-white.svg';
 import './styles.css';
 
 function CustomApp({ Component, pageProps }: AppProps) {
+  // all routes goes here
+  // figure out for a single entry point
   return (
     <>
       <Head>
@@ -17,6 +19,7 @@ function CustomApp({ Component, pageProps }: AppProps) {
           <h1>Welcome to core!</h1>
         </header>
         <main>
+
           <Component {...pageProps} />
         </main>
       </div>

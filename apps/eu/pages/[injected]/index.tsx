@@ -1,16 +1,18 @@
 import { useRouter } from 'next/router'
 import {AppCore} from '@nx-ioc/app-core';
-import { EuContainerProvider } from '@nx-ioc/eu-container';
+import { getEuContainer } from '@nx-ioc/eu-container';
+import { InjectionProvider } from '@nx-ioc/di-common';
 
 const Post = () => {
   const router = useRouter()
   const { injected } = router.query
 
   return (
-    <EuContainerProvider>
-        <AppCore route={String(injected)} />
-    </EuContainerProvider>
+    <InjectionProvider container={getEuContainer()}>
+      <AppCore route={String(injected)} />
+    </InjectionProvider>
   )
 }
 
 export default Post
+

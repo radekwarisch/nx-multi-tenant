@@ -1,9 +1,8 @@
 import * as R from 'ramda';
 import {
-  extendToWorldContainer,
-  WorldIdentifiers,
+  getWorldContainer,
 } from '@nx-ioc/world-container';
-import { createContainer, InjectionProvider } from '@nx-ioc/ioc';
+import {BindingsIdentifiers,} from '@nx-ioc/di-bindings';
 import { useState } from 'react';
 
 const withTopSlot = (MyModule: any) => (props: any) => (
@@ -20,9 +19,9 @@ export const useWithCustomLogic1 = (opts: any) => {
 }
 
 export const extendToEuContainer = (container: any) => {
-  const WorldRoutes = container.get(WorldIdentifiers.ADDITONAL_ROUTES);
-  const WorldMyModule = container.get(WorldIdentifiers.MY_MODULE);
-  const MyCmpComposites: Array<any> = container.get(WorldIdentifiers.MY_CMP_COMPOSITES);
+  const WorldRoutes = container.get(BindingsIdentifiers.ADDITONAL_ROUTES);
+  const WorldMyModule = container.get(BindingsIdentifiers.MY_MODULE);
+  const MyCmpComposites: Array<any> = container.get(BindingsIdentifiers.MY_CMP_COMPOSITES);
 
   /**
    * @description
@@ -30,32 +29,23 @@ export const extendToEuContainer = (container: any) => {
    */
   const [, useWithLogic2, MyCmpRender] = MyCmpComposites;
 
-  container.unbind(WorldIdentifiers.ADDITONAL_ROUTES);
+  container.unbind(BindingsIdentifiers.ADDITONAL_ROUTES);
   container
-    .bind(WorldIdentifiers.ADDITONAL_ROUTES)
+    .bind(BindingsIdentifiers.ADDITONAL_ROUTES)
     .toConstantValue({ ...WorldRoutes, privacy: <div>Eu-dedicated route</div> });
 
-  container.unbind(WorldIdentifiers.MY_MODULE);
+  container.unbind(BindingsIdentifiers.MY_MODULE);
   container
-    .bind(WorldIdentifiers.MY_MODULE)
+    .bind(BindingsIdentifiers.MY_MODULE)
     .toConstantValue(withTopSlot(WorldMyModule));
 
-  container.unbind(WorldIdentifiers.MY_CMP_COMPOSITES);
-  container.bind(WorldIdentifiers.MY_CMP_COMPOSITES).toConstantValue([useWithCustomLogic1, useWithLogic2, MyCmpRender]);
+  container.unbind(BindingsIdentifiers.MY_CMP_COMPOSITES);
+  container.bind(BindingsIdentifiers.MY_CMP_COMPOSITES).toConstantValue([useWithCustomLogic1, useWithLogic2, MyCmpRender]);
 
   return container;
 };
 
-const getEuContainer = R.pipe(
-  createContainer,
-  extendToWorldContainer,
+export const getEuContainer = R.pipe(
+  getWorldContainer,
   extendToEuContainer
 );
-
-export const EuContainerProvider = ({ children }: any) => {
-  const container = getEuContainer();
-
-  return (
-    <InjectionProvider container={container}>{children}</InjectionProvider>
-  );
-};

@@ -1,20 +1,18 @@
-import React from 'react';
-
+import { useRouter } from 'next/router'
 import {AppCore} from '@nx-ioc/app-core';
-import { EuContainerProvider } from '@nx-ioc/eu-container';
+import { getEuContainer } from '@nx-ioc/eu-container';
+import { InjectionProvider } from '@nx-ioc/di-common';
 
-export function Index() {
-  /*
-   * Replace the elements below with your own.
-   *
-   * Note: The corresponding styles are in the ./index.css file.
-   */
+const Post = () => {
+  const router = useRouter()
+  const { injected } = router.query
+
   return (
-    <EuContainerProvider>
-        <AppCore route={''} />
-    </EuContainerProvider>
-
-  );
+    <InjectionProvider container={getEuContainer()}>
+      <AppCore route={String(injected)} />
+    </InjectionProvider>
+  )
 }
 
-export default Index;
+export default Post
+

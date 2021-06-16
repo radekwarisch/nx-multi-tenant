@@ -1,12 +1,11 @@
 import * as R from 'ramda';
-import { useInjection } from '@nx-ioc/ioc';
-import { WorldIdentifiers } from '@nx-ioc/world-container';
+import { useInjection } from '@nx-ioc/di-common';
+import { BindingsIdentifiers } from '@nx-ioc/di-bindings';
 import Link from 'next/link';
-import { useWithLogic1, MyCmpRender } from '../../../../world-container/src/lib/my-cmp';
 
 const HomeRoute = () => {
-  const MyModule: any = useInjection(WorldIdentifiers.MY_MODULE);
-  const MyCmpComposites: Array<any> = useInjection(WorldIdentifiers.MY_CMP_COMPOSITES);
+  const MyModule: any = useInjection(BindingsIdentifiers.MY_MODULE);
+  const MyCmpComposites: Array<any> = useInjection(BindingsIdentifiers.MY_CMP_COMPOSITES);
 
   const [useWithLogic1, useWithLogic2, MyCmpRender] = MyCmpComposites;
 
@@ -26,7 +25,7 @@ const BASE_ROUTES = {
  * Naming for is not yet standardised - it should be addressed
  */
 export const RoutesAdapter = ({ route }: any) => {
-  const AdditionalRoutes: any = useInjection(WorldIdentifiers.ADDITONAL_ROUTES);
+  const AdditionalRoutes: any = useInjection(BindingsIdentifiers.ADDITONAL_ROUTES);
 
   const AllRoutes: any = {
     ...BASE_ROUTES,

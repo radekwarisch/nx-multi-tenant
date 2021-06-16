@@ -1,19 +1,9 @@
 import * as R from 'ramda';
 import { AdditionalRoutes } from './additional-routes';
 import MyModule from './my-module';
-import { createContainer, InjectionProvider } from '@nx-ioc/ioc';
+import { createContainer } from '@nx-ioc/di-common';
 import MyCmpComposites from './my-cmp';
-
-/**
- * @description
- * Provides unique keys
- */
-
-export const WorldIdentifiers = {
-  ADDITONAL_ROUTES: Symbol.for('ADDITONAL_ROUTES'),
-  MY_MODULE: Symbol.for('MY_MODULE'),
-  MY_CMP_COMPOSITES: Symbol.for('MY_CMP_COMPOSITES')
-};
+import {BindingsIdentifiers} from '@nx-ioc/di-bindings';
 
 /**
  * @description
@@ -22,20 +12,12 @@ export const WorldIdentifiers = {
 
 export const extendToWorldContainer = (container: any) => {
   container
-    .bind(WorldIdentifiers.ADDITONAL_ROUTES)
+    .bind(BindingsIdentifiers.ADDITONAL_ROUTES)
     .toConstantValue(AdditionalRoutes);
-  container.bind(WorldIdentifiers.MY_MODULE).toConstantValue(MyModule);
-  container.bind(WorldIdentifiers.MY_CMP_COMPOSITES).toConstantValue(MyCmpComposites);
+  container.bind(BindingsIdentifiers.MY_MODULE).toConstantValue(MyModule);
+  container.bind(BindingsIdentifiers.MY_CMP_COMPOSITES).toConstantValue(MyCmpComposites);
 
   return container;
 };
 
-const getWorldContainer = R.pipe(createContainer, extendToWorldContainer);
-
-export const WorldContainerProvider = ({ children }: any) => {
-  const container = getWorldContainer();
-
-  return (
-    <InjectionProvider container={container}>{children}</InjectionProvider>
-  );
-};
+export const getWorldContainer = R.pipe(createContainer, extendToWorldContainer);

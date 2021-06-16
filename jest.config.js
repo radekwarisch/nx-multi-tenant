@@ -6,10 +6,11 @@ module.exports = {
     '<rootDir>/libs/pl-container',
     '<rootDir>/apps/eu',
     '<rootDir>/apps/pl',
-    '<rootDir>/libs/ioc',
     '<rootDir>/libs/components',
     '<rootDir>/apps/world',
     '<rootDir>/libs/world-container',
     '<rootDir>/libs/app-core',
+    '<rootDir>/libs/di-bindings',
+    '<rootDir>/libs/di-common',
   ],
 };

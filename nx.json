@@ -31,9 +31,6 @@
     "pl": {
       "tags": []
     },
-    "ioc": {
-      "tags": []
-    },
     "components": {
       "tags": []
     },
@@ -44,6 +41,12 @@
       "tags": []
     },
     "app-core": {
+      "tags": []
+    },
+    "di-bindings": {
+      "tags": []
+    },
+    "di-common": {
       "tags": []
     }
   }

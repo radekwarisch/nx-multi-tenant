@@ -1,21 +1,17 @@
-import React from 'react';
+import { useRouter } from 'next/router'
+import {AppCore, NoPageCtrl} from '@nx-ioc/app-core';
+import { getPlContainer } from '@nx-ioc/pl-container';
+import { InjectionProvider } from '@nx-ioc/di-common';
 
-import {AppCore} from '@nx-ioc/app-core';
-import { PlContainerProvider } from '@nx-ioc/pl-container';
+const Post = () => {
+  const router = useRouter()
+  const { injected } = router.query
 
-export function Index() {
-  /*
-   * Replace the elements below with your own.
-   *
-   * Note: The corresponding styles are in the ./index.css file.
-   */
   return (
-
-        <PlContainerProvider>
-          <AppCore route={''} />
-        </PlContainerProvider>
-
-  );
+    <InjectionProvider container={getPlContainer()}>
+      <AppCore route={String(injected)} />
+    </InjectionProvider>
+  )
 }
 
-export default Index;
+export default Post
