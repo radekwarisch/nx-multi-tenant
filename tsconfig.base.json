@@ -17,13 +17,15 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@nx-ioc/world-container": ["libs/world-container/src/index.ts"],
-      "@nx-ioc/eu-container": ["libs/eu-container/src/index.ts"],
-      "@nx-ioc/pl-container": ["libs/pl-container/src/index.ts"],
-      "@nx-ioc/di-common": ["libs/di-common/src/index.ts"],
-      "@nx-ioc/components": ["libs/components/src/index.ts"],
       "@nx-ioc/app-core": ["libs/app-core/src/index.ts"],
-      "@nx-ioc/di-bindings": ["libs/di-bindings/src/index.ts"]
+      "@nx-ioc/components": ["libs/components/src/index.ts"],
+      "@nx-ioc/di-bindings": ["libs/di-bindings/src/index.ts"],
+      "@nx-ioc/di-common": ["libs/di-common/src/index.ts"],
+      "@nx-ioc/eu-container": ["libs/eu-container/src/index.ts"],
+      "@nx-ioc/fr-container": ["libs/fr-container/src/index.ts"],
+      "@nx-ioc/pl-container": ["libs/pl-container/src/index.ts"],
+      "@nx-ioc/us-container": ["libs/us-container/src/index.ts"],
+      "@nx-ioc/world-container": ["libs/world-container/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

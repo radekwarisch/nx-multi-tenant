@@ -19,34 +19,40 @@
     }
   },
   "projects": {
-    "eu-container": {
-      "tags": []
-    },
-    "pl-container": {
-      "tags": []
-    },
-    "eu": {
-      "tags": []
-    },
-    "pl": {
+    "app-core": {
       "tags": []
     },
     "components": {
-      "tags": []
-    },
-    "world": {
-      "tags": []
-    },
-    "world-container": {
-      "tags": []
-    },
-    "app-core": {
       "tags": []
     },
     "di-bindings": {
       "tags": []
     },
     "di-common": {
+      "tags": []
+    },
+    "eu-container": {
+      "tags": []
+    },
+    "fr-container": {
+      "tags": []
+    },
+    "pl-container": {
+      "tags": []
+    },
+    "social-qa-fr": {
+      "tags": []
+    },
+    "social-qa-pl": {
+      "tags": []
+    },
+    "social-qa-us": {
+      "tags": []
+    },
+    "us-container": {
+      "tags": []
+    },
+    "world-container": {
       "tags": []
     }
   }

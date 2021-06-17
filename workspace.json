@@ -3,11 +3,22 @@
   "cli": {
     "defaultCollection": "@nrwl/next"
   },
-  "defaultProject": "world",
+  "defaultProject": "social-qa-us",
   "generators": {
     "@nrwl/react": {
       "application": {
+        "style": "css",
+        "linter": "eslint",
+        "strict": true,
         "babel": true
+      },
+      "component": {
+        "style": "css"
+      },
+      "library": {
+        "style": "css",
+        "linter": "eslint",
+        "strict": true
       }
     },
     "@nrwl/next": {
@@ -18,146 +29,23 @@
     }
   },
   "projects": {
-    "eu-container": {
-      "root": "libs/eu-container",
-      "sourceRoot": "libs/eu-container/src",
+    "app-core": {
+      "root": "libs/app-core",
+      "sourceRoot": "libs/app-core/src",
       "projectType": "library",
       "targets": {
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/eu-container/**/*.{ts,tsx,js,jsx}"]
+            "lintFilePatterns": ["libs/app-core/**/*.{ts,tsx,js,jsx}"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/eu-container"],
+          "outputs": ["coverage/libs/app-core"],
           "options": {
-            "jestConfig": "libs/eu-container/jest.config.js",
+            "jestConfig": "libs/app-core/jest.config.js",
             "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "pl-container": {
-      "root": "libs/pl-container",
-      "sourceRoot": "libs/pl-container/src",
-      "projectType": "library",
-      "targets": {
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["libs/pl-container/**/*.{ts,tsx,js,jsx}"]
-          }
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/pl-container"],
-          "options": {
-            "jestConfig": "libs/pl-container/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "eu": {
-      "root": "apps/eu",
-      "sourceRoot": "apps/eu",
-      "projectType": "application",
-      "targets": {
-        "build": {
-          "executor": "@nrwl/next:build",
-          "outputs": ["{options.outputPath}"],
-          "options": {
-            "root": "apps/eu",
-            "outputPath": "dist/apps/eu"
-          },
-          "configurations": {
-            "production": {}
-          }
-        },
-        "serve": {
-          "executor": "@nrwl/next:server",
-          "options": {
-            "buildTarget": "eu:build",
-            "dev": true
-          },
-          "configurations": {
-            "production": {
-              "buildTarget": "eu:build:production",
-              "dev": false
-            }
-          }
-        },
-        "export": {
-          "executor": "@nrwl/next:export",
-          "options": {
-            "buildTarget": "eu:build:production"
-          }
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/eu"],
-          "options": {
-            "jestConfig": "apps/eu/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["apps/eu/**/*.{ts,tsx,js,jsx}"]
-          }
-        }
-      }
-    },
-    "pl": {
-      "root": "apps/pl",
-      "sourceRoot": "apps/pl",
-      "projectType": "application",
-      "targets": {
-        "build": {
-          "executor": "@nrwl/next:build",
-          "outputs": ["{options.outputPath}"],
-          "options": {
-            "root": "apps/pl",
-            "outputPath": "dist/apps/pl"
-          },
-          "configurations": {
-            "production": {}
-          }
-        },
-        "serve": {
-          "executor": "@nrwl/next:server",
-          "options": {
-            "buildTarget": "pl:build",
-            "dev": true
-          },
-          "configurations": {
-            "production": {
-              "buildTarget": "pl:build:production",
-              "dev": false
-            }
-          }
-        },
-        "export": {
-          "executor": "@nrwl/next:export",
-          "options": {
-            "buildTarget": "pl:build:production"
-          }
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/pl"],
-          "options": {
-            "jestConfig": "apps/pl/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["apps/pl/**/*.{ts,tsx,js,jsx}"]
           }
         }
       }
@@ -178,99 +66,6 @@
           "outputs": ["coverage/libs/components"],
           "options": {
             "jestConfig": "libs/components/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "world": {
-      "root": "apps/world",
-      "sourceRoot": "apps/world",
-      "projectType": "application",
-      "targets": {
-        "build": {
-          "executor": "@nrwl/next:build",
-          "outputs": ["{options.outputPath}"],
-          "options": {
-            "root": "apps/world",
-            "outputPath": "dist/apps/world"
-          },
-          "configurations": {
-            "production": {}
-          }
-        },
-        "serve": {
-          "executor": "@nrwl/next:server",
-          "options": {
-            "buildTarget": "world:build",
-            "dev": true
-          },
-          "configurations": {
-            "production": {
-              "buildTarget": "world:build:production",
-              "dev": false
-            }
-          }
-        },
-        "export": {
-          "executor": "@nrwl/next:export",
-          "options": {
-            "buildTarget": "world:build:production"
-          }
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/world"],
-          "options": {
-            "jestConfig": "apps/world/jest.config.js",
-            "passWithNoTests": true
-          }
-        },
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["apps/world/**/*.{ts,tsx,js,jsx}"]
-          }
-        }
-      }
-    },
-    "world-container": {
-      "root": "libs/world-container",
-      "sourceRoot": "libs/world-container/src",
-      "projectType": "library",
-      "targets": {
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["libs/world-container/**/*.{ts,tsx,js,jsx}"]
-          }
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/world-container"],
-          "options": {
-            "jestConfig": "libs/world-container/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "app-core": {
-      "root": "libs/app-core",
-      "sourceRoot": "libs/app-core/src",
-      "projectType": "library",
-      "targets": {
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["libs/app-core/**/*.{ts,tsx,js,jsx}"]
-          }
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/app-core"],
-          "options": {
-            "jestConfig": "libs/app-core/jest.config.js",
             "passWithNoTests": true
           }
         }
@@ -313,6 +108,339 @@
           "outputs": ["coverage/libs/di-common"],
           "options": {
             "jestConfig": "libs/di-common/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "eu-container": {
+      "root": "libs/eu-container",
+      "sourceRoot": "libs/eu-container/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/eu-container/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/eu-container"],
+          "options": {
+            "jestConfig": "libs/eu-container/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "fr-container": {
+      "root": "libs/fr-container",
+      "sourceRoot": "libs/fr-container/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/fr-container/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/fr-container"],
+          "options": {
+            "jestConfig": "libs/fr-container/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "pl-container": {
+      "root": "libs/pl-container",
+      "sourceRoot": "libs/pl-container/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/pl-container/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/pl-container"],
+          "options": {
+            "jestConfig": "libs/pl-container/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "social-qa-fr": {
+      "root": "apps/social-qa/fr",
+      "sourceRoot": "apps/social-qa/fr/src",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/web:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/social-qa/fr",
+            "index": "apps/social-qa/fr/src/index.html",
+            "main": "apps/social-qa/fr/src/main.tsx",
+            "polyfills": "apps/social-qa/fr/src/polyfills.ts",
+            "tsConfig": "apps/social-qa/fr/tsconfig.app.json",
+            "assets": [
+              "apps/social-qa/fr/src/favicon.ico",
+              "apps/social-qa/fr/src/assets"
+            ],
+            "styles": ["apps/social-qa/fr/src/styles.css"],
+            "scripts": [],
+            "webpackConfig": "@nrwl/react/plugins/webpack"
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/social-qa/fr/src/environments/environment.ts",
+                  "with": "apps/social-qa/fr/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/web:dev-server",
+          "options": {
+            "buildTarget": "social-qa-fr:build",
+            "hmr": true
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "social-qa-fr:build:production",
+              "hmr": false
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/social-qa/fr/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/social-qa/fr"],
+          "options": {
+            "jestConfig": "apps/social-qa/fr/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "social-qa-pl": {
+      "root": "apps/social-qa/pl",
+      "sourceRoot": "apps/social-qa/pl/src",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/web:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/social-qa/pl",
+            "index": "apps/social-qa/pl/src/index.html",
+            "main": "apps/social-qa/pl/src/main.tsx",
+            "polyfills": "apps/social-qa/pl/src/polyfills.ts",
+            "tsConfig": "apps/social-qa/pl/tsconfig.app.json",
+            "assets": [
+              "apps/social-qa/pl/src/favicon.ico",
+              "apps/social-qa/pl/src/assets"
+            ],
+            "styles": ["apps/social-qa/pl/src/styles.css"],
+            "scripts": [],
+            "webpackConfig": "@nrwl/react/plugins/webpack"
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/social-qa/pl/src/environments/environment.ts",
+                  "with": "apps/social-qa/pl/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/web:dev-server",
+          "options": {
+            "buildTarget": "social-qa-pl:build",
+            "hmr": true
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "social-qa-pl:build:production",
+              "hmr": false
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/social-qa/pl/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/social-qa/pl"],
+          "options": {
+            "jestConfig": "apps/social-qa/pl/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "social-qa-us": {
+      "root": "apps/social-qa/us",
+      "sourceRoot": "apps/social-qa/us/src",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/web:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/social-qa/us",
+            "index": "apps/social-qa/us/src/index.html",
+            "main": "apps/social-qa/us/src/main.tsx",
+            "polyfills": "apps/social-qa/us/src/polyfills.ts",
+            "tsConfig": "apps/social-qa/us/tsconfig.app.json",
+            "assets": [
+              "apps/social-qa/us/src/favicon.ico",
+              "apps/social-qa/us/src/assets"
+            ],
+            "styles": ["apps/social-qa/us/src/styles.css"],
+            "scripts": [],
+            "webpackConfig": "@nrwl/react/plugins/webpack"
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/social-qa/us/src/environments/environment.ts",
+                  "with": "apps/social-qa/us/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/web:dev-server",
+          "options": {
+            "buildTarget": "social-qa-us:build",
+            "hmr": true
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "social-qa-us:build:production",
+              "hmr": false
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/social-qa/us/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/social-qa/us"],
+          "options": {
+            "jestConfig": "apps/social-qa/us/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "us-container": {
+      "root": "libs/us-container",
+      "sourceRoot": "libs/us-container/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/us-container/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/us-container"],
+          "options": {
+            "jestConfig": "libs/us-container/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "world-container": {
+      "root": "libs/world-container",
+      "sourceRoot": "libs/world-container/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/world-container/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/world-container"],
+          "options": {
+            "jestConfig": "libs/world-container/jest.config.js",
             "passWithNoTests": true
           }
         }

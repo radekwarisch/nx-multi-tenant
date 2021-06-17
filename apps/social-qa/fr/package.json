@@ -1,0 +1,9 @@
+{
+  "name": "@nx-ioc/social-qa-fr",
+  "version": "0.0.0",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "moment": "2.29.1"
+  }
+}
